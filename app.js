@@ -54,6 +54,7 @@ const loadRifleButton           = document.getElementById("btnLoadRifle");
 const deleteRifleButton         = document.getElementById("btnDeleteRifle");
 
 const velocityInput      = document.getElementById("velocity");
+const shotEntryForm      = document.getElementById("shotEntryForm");
 const shotTargetSelect   = document.getElementById("shotTarget");
 const shotCounter        = document.getElementById("shotCounter");
 const shotCounterBox     = document.getElementById("shotCounterBox");
@@ -762,11 +763,23 @@ velocityInput.addEventListener(
     calculateEnergy
 );
 
+if(shotEntryForm)
+{
+    shotEntryForm.addEventListener(
+        "submit",
+        function(event)
+        {
+            event.preventDefault();
+            addShot();
+        }
+    );
+}
+
 velocityInput.addEventListener(
     "keydown",
     function(event)
     {
-        if (event.key === "Enter")
+        if (event.key === "Enter" || event.keyCode === 13)
         {
             event.preventDefault();
             addShot();

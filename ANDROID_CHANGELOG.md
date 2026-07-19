@@ -1,5 +1,13 @@
 # ChronoMate Android Changelog
 
+## v0.3.1
+
+- Added on-screen keyboard Enter/Done support for the Velocity field.
+- Pressing Enter/Done now records the shot exactly like the **Add Shot** button.
+- The Velocity field clears and remains focused so the next reading can be entered immediately.
+- Desktop and physical-keyboard Enter behaviour remains supported.
+- No Export, Import or PDF functionality was added in this release.
+
 ## v0.3.0
 
 - Enabled JavaScript alert and confirmation dialogs in the Android WebView.

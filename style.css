@@ -613,3 +613,10 @@ footer{
 #userAmmoHeadSize {
     margin-bottom: 10px;
 }
+
+
+/* Android/mobile shot-entry form wrapper */
+#shotEntryForm
+{
+    margin: 0;
+}
