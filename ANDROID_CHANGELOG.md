@@ -1,5 +1,13 @@
 # ChronoMate Android Changelog
 
+## v0.4.0
+
+- Established permanent release signing for in-place Android updates.
+- GitHub Actions now builds a signed release APK instead of a temporary debug APK.
+- Signing key and passwords are supplied only through GitHub Actions secrets.
+- Added signing setup and recovery guidance.
+- Updated Android build to versionCode 10 / versionName 0.4.0.
+
 ## v0.3.3
 
 - Added Android-native **Import Data** support.

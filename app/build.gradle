@@ -2,6 +2,14 @@ plugins {
     id "com.android.application"
 }
 
+// Release signing values are supplied by GitHub Actions secrets or optional
+// local Gradle properties. The private keystore is never stored in this repo.
+def releaseStoreFile = System.getenv("CHRONOMATE_KEYSTORE_PATH") ?: findProperty("CHRONOMATE_KEYSTORE_PATH")
+def releaseStorePassword = System.getenv("CHRONOMATE_STORE_PASSWORD") ?: findProperty("CHRONOMATE_STORE_PASSWORD")
+def releaseKeyAlias = System.getenv("CHRONOMATE_KEY_ALIAS") ?: findProperty("CHRONOMATE_KEY_ALIAS")
+def releaseKeyPassword = System.getenv("CHRONOMATE_KEY_PASSWORD") ?: findProperty("CHRONOMATE_KEY_PASSWORD")
+def hasReleaseSigning = releaseStoreFile && releaseStorePassword && releaseKeyAlias && releaseKeyPassword
+
 android {
     namespace "uk.co.cbdesigns.chronomate"
     compileSdk 34
@@ -10,8 +18,19 @@ android {
         applicationId "uk.co.cbdesigns.chronomate"
         minSdk 22
         targetSdk 34
-        versionCode 9
-        versionName "0.3.3"
+        versionCode 10
+        versionName "0.4.0"
+    }
+
+    signingConfigs {
+        release {
+            if (hasReleaseSigning) {
+                storeFile file(releaseStoreFile)
+                storePassword releaseStorePassword
+                keyAlias releaseKeyAlias
+                keyPassword releaseKeyPassword
+            }
+        }
     }
 
     buildTypes {
@@ -19,7 +38,21 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"),
                     "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
+    }
+}
+
+gradle.taskGraph.whenReady { graph ->
+    boolean buildingRelease = graph.allTasks.any { task ->
+        task.name.toLowerCase().contains("release")
+    }
+
+    if (buildingRelease && !hasReleaseSigning) {
+        throw new GradleException(
+                "ChronoMate release signing is not configured. " +
+                "See SIGNING_SETUP.md and provide the four CHRONOMATE signing values."
+        )
     }
 }
 
