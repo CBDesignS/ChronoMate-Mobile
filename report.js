@@ -266,11 +266,41 @@ function openReportWindow(report) {
                         display: none;
                     }
 
+                    html,
                     body {
-                        background: white !important;
-                        color: black !important;
+                        background: #ffffff !important;
+                        color: #111111 !important;
                         margin: 0;
                         font-size: 12.5px;
+                        -webkit-print-color-adjust: exact;
+                        print-color-adjust: exact;
+                    }
+
+                    .report-panel {
+                        background: #ffffff !important;
+                        color: #111111 !important;
+                        border-color: #8bc53f !important;
+                    }
+
+                    .report-panel *,
+                    .report-header,
+                    .report-header *,
+                    table,
+                    tbody,
+                    tr,
+                    td {
+                        color: #111111 !important;
+                    }
+
+                    th {
+                        background: #f3f4f6 !important;
+                        color: #111111 !important;
+                        border-color: #cccccc !important;
+                    }
+
+                    td {
+                        background: #ffffff !important;
+                        border-color: #cccccc !important;
                     }
 
                     .report-header {
@@ -336,9 +366,7 @@ function openReportWindow(report) {
                     }
 
                     footer {
-                        margin-top: 10px;
-                        padding-top: 6px;
-                        font-size: 9px;
+                        display: none !important;
                     }
                 }
             </style>
