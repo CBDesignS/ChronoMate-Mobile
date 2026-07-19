@@ -2,7 +2,7 @@
 
 <img src="assets/logo.png" alt="ChronoMate 2026 Logo" width="600">
 
-# ChronoMate 2026 Fire Tablet Version 0.1.0
+# ChronoMate 2026 Android Version 0.3.0
 
 ### Lightweight, offline chronograph recording software for air rifles.
 
@@ -68,16 +68,12 @@ The guides below can be viewed directly on GitHub or opened from the **docs** fo
 
 Tested on:
 
-* Amazon Fire Tab 10 rev7
+* Amazon Fire Tab 10 rev 7
+* Amazon Fire Tab 10 rev 11
+* Google Pixel 10 (Android 17)
 
-Supported browsers:
 
-* Mozilla Firefox ( tested on Version 1520.5 (64-bit))
-* Microsoft Edge (tested on Version 135.0.7049.115 (Official Build) (64-bit))
-* Brave Browser (tested on )
-* Chrome (tested on Version 135.0.7049.115 (Official Build) (64-bit))
-
-ChronoMate is designed for desktop browsers.
+ChronoMate is designed for desktop browsers and Android Tablets / Large screen Phones.
 
 Android and iOS local file execution are not currently supported due to mobile operating system restrictions.
 
