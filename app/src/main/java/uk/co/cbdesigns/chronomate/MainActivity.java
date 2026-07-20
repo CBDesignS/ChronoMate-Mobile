@@ -1,11 +1,16 @@
 package uk.co.cbdesigns.chronomate;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
+import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -25,8 +30,12 @@ public class MainActivity extends Activity {
     private static final int REQUEST_CREATE_BACKUP = 1001;
     private static final int REQUEST_OPEN_BACKUP = 1002;
 
+    private static final long SUCCESS_MESSAGE_DURATION_MS = 3000L;
+
     private WebView webView;
     private String pendingBackupJson;
+    private Toast activeSuccessToast;
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +63,43 @@ public class MainActivity extends Activity {
 
         webView.addJavascriptInterface(new AndroidBridge(), "AndroidBridge");
 
-        // Enables JavaScript alert/confirm dialogs used by ChronoMate.
-        // The Clear Shot String button relies on confirm() before deleting shots.
-        webView.setWebChromeClient(new WebChromeClient());
+        // Keep JavaScript support while replacing WebView's unattractive
+        // file:// confirmation box with a native ChronoMate dialog.
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onJsConfirm(
+                    WebView view,
+                    String url,
+                    String message,
+                    final JsResult result
+            ) {
+                final AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("ChronoMate")
+                        .setMessage(message)
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                result.cancel();
+                            }
+                        })
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int which) {
+                                result.confirm();
+                            }
+                        })
+                        .create();
+
+                dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        result.cancel();
+                    }
+                });
+                dialog.show();
+                return true;
+            }
+        });
         webView.setWebViewClient(new WebViewClient());
         setContentView(webView);
 
@@ -73,11 +116,7 @@ public class MainActivity extends Activity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(
-                            MainActivity.this,
-                            message,
-                            Toast.LENGTH_SHORT
-                    ).show();
+                    showTimedSuccessMessage(message);
                 }
             });
         }
@@ -153,6 +192,30 @@ public class MainActivity extends Activity {
                 }
             });
         }
+    }
+
+    private void showTimedSuccessMessage(String message) {
+        if (activeSuccessToast != null) {
+            activeSuccessToast.cancel();
+        }
+
+        activeSuccessToast = Toast.makeText(
+                MainActivity.this,
+                message,
+                Toast.LENGTH_LONG
+        );
+        activeSuccessToast.show();
+
+        mainHandler.removeCallbacksAndMessages(null);
+        mainHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (activeSuccessToast != null) {
+                    activeSuccessToast.cancel();
+                    activeSuccessToast = null;
+                }
+            }
+        }, SUCCESS_MESSAGE_DURATION_MS);
     }
 
     private String normaliseBackupFileName(String suggestedFileName) {
@@ -260,11 +323,7 @@ public class MainActivity extends Activity {
             writer.write(backupJson);
             writer.flush();
 
-            Toast.makeText(
-                    this,
-                    "ChronoMate backup saved.",
-                    Toast.LENGTH_SHORT
-            ).show();
+            showTimedSuccessMessage("ChronoMate backup saved.");
         } catch (Exception error) {
             Toast.makeText(
                     this,
@@ -291,6 +350,12 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        mainHandler.removeCallbacksAndMessages(null);
+        if (activeSuccessToast != null) {
+            activeSuccessToast.cancel();
+            activeSuccessToast = null;
+        }
+
         if (webView != null) {
             webView.loadUrl("about:blank");
             webView.stopLoading();

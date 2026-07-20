@@ -1,5 +1,24 @@
 # ChronoMate Android Changelog
 
+## v0.6.1
+
+### Improved
+
+- Success notifications now close after a fixed three-second display period.
+- Rifle save, data import and data export notifications now use the same timed bottom banner behaviour.
+- JavaScript confirmation prompts now open as native Android ChronoMate dialogs.
+- Clear Shot String, Delete Saved Rifle and Delete User Pellet confirmations no longer display the WebView `file://` message.
+
+### Changed
+
+- Updated Android application version to v0.6.1 with versionCode 15.
+- Updated GitHub Actions to generate `ChronoMate-v0.6.1.apk`.
+
+### Notes
+
+This release changes Android notification and confirmation presentation only.
+No chronograph calculations, backup data, report generation or storage behaviour were changed.
+
 ## v0.6.0
 
 ### Improved
