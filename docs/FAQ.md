@@ -152,6 +152,18 @@ Future releases will focus on:
 
 New functionality will only be added where it clearly improves the recording, reporting or management of chronograph sessions while preserving ChronoMate's lightweight design philosophy.
 
+
+---
+
+Android Debug
+
+if a user has task kill on exit enabled then ChronoMate will have problems with importing & exporting user Backup files.
+the nature of a backup & import is to kill the current task to open the file picker, do the task then once complete restart ChronoMate,
+this breaks ChronoMate by killing the current task it was busy doing so when the ChronoMate task is restated it has no idea what it was doing so will instantly fail.
+
+Any android crashes and bugs should be filed with a debug log zip archive that was taken after the crash occured and will require steps that were taken to produce
+the crash/bug on your device. WE only have access to a couple of Android devices so can not test on every item of Hardware in use.
+
 ---
 
 ## Where can I find more information?
