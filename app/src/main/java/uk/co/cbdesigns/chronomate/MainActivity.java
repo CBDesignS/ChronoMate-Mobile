@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -274,23 +275,8 @@ public class MainActivity extends Activity {
 
         Uri source = data.getData();
 
-        try (InputStream inputStream = getContentResolver().openInputStream(source);
-             BufferedReader reader = inputStream == null
-                     ? null
-                     : new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
-
-            if (reader == null) {
-                throw new IllegalStateException("Could not open the selected file.");
-            }
-
-            StringBuilder jsonBuilder = new StringBuilder();
-            String line;
-
-            while ((line = reader.readLine()) != null) {
-                jsonBuilder.append(line).append('\n');
-            }
-
-            String backupJson = jsonBuilder.toString().trim();
+        try {
+            String backupJson = readBackupFile(source).trim();
 
             if (backupJson.startsWith("\uFEFF")) {
                 backupJson = backupJson.substring(1).trim();
@@ -324,6 +310,54 @@ public class MainActivity extends Activity {
                     "ChronoMate could not read the selected backup file.",
                     Toast.LENGTH_LONG
             ).show();
+        }
+    }
+
+
+    private String readBackupFile(Uri source) throws Exception {
+        Exception streamError = null;
+
+        // Keep the existing read path used successfully by Android 17 and the
+        // 7th-generation Fire tablet.
+        try (InputStream inputStream = getContentResolver().openInputStream(source)) {
+            if (inputStream != null) {
+                return readUtf8Stream(inputStream);
+            }
+        } catch (Exception error) {
+            streamError = error;
+        }
+
+        // Some Fire OS 7 document providers return a valid selected URI but do
+        // not expose it correctly through openInputStream(). Only in that case,
+        // open the same URI through an AssetFileDescriptor instead.
+        try (AssetFileDescriptor descriptor =
+                     getContentResolver().openAssetFileDescriptor(source, "r")) {
+            if (descriptor == null) {
+                throw new IllegalStateException("Could not open the selected file.");
+            }
+
+            try (InputStream inputStream = descriptor.createInputStream()) {
+                return readUtf8Stream(inputStream);
+            }
+        } catch (Exception fallbackError) {
+            if (streamError != null) {
+                fallbackError.addSuppressed(streamError);
+            }
+            throw fallbackError;
+        }
+    }
+
+    private String readUtf8Stream(InputStream inputStream) throws Exception {
+        try (BufferedReader reader =
+                     new BufferedReader(new InputStreamReader(inputStream, "UTF-8"))) {
+            StringBuilder text = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                text.append(line).append('\n');
+            }
+
+            return text.toString();
         }
     }
 

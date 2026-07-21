@@ -1,5 +1,13 @@
 # ChronoMate Android Changelog
 
+## v0.6.6
+
+### Fixed
+- Added a narrowly scoped Android file-reading fallback for Fire OS 7 document providers.
+- ChronoMate still uses the existing `openInputStream()` import path first.
+- If that path fails, Android retries the same selected URI through an `AssetFileDescriptor`.
+- No changes were made to the backup format, JavaScript importer, desktop files, export process or working Android 17 / Fire OS 5 import path.
+
 ## v0.6.5
 
 ### Fixed
