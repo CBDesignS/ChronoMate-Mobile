@@ -1,30 +1,18 @@
-# ChronoMate 2026 Frequently Asked Questions
+# ChronoMate Android Frequently Asked Questions
 
-This document answers the most common questions about using ChronoMate 2026.
+## Why isn't ChronoMate available from the Google Play Store?
 
-For detailed information, please refer to the User Guide and other documentation included with the project.
+ChronoMate is currently distributed directly through the GitHub Releases page.
 
----
-
-## What is ChronoMate?
-
-ChronoMate is a lightweight, offline chronograph recording application designed specifically for air rifles.
-
-It records chronograph sessions, calculates muzzle energy, stores rifle and pellet information, and generates professional printable reports.
+This keeps the application completely free to download without requiring a Google Play Developer account.
 
 ---
 
-## Does ChronoMate need to be installed?
+## Is ChronoMate free?
 
-No.
+Yes.
 
-ChronoMate is completely portable.
-
-Simply extract the release archive and open **ChronoMate.html** using a supported desktop browser.
-
-No files are installed into Windows.
-
-No registry entries are created.
+ChronoMate Android is completely free to download and use.
 
 ---
 
@@ -32,159 +20,150 @@ No registry entries are created.
 
 No.
 
-ChronoMate runs entirely offline.
+ChronoMate works entirely offline once installed.
 
-All calculations, reports and user data remain on your computer.
-
----
-
-## Which browsers are supported?
-
-ChronoMate has been tested using:
-
-- Mozilla Firefox
-- Microsoft Edge
-- Brave Browser
-
-Modern desktop browsers should work correctly.
+No online account or subscription is required.
 
 ---
 
-## Does ChronoMate work on Android or iPhone?
-
-Not currently.
-
-Modern mobile operating systems restrict locally opened HTML applications from loading linked JavaScript, CSS and image files correctly.
-
-ChronoMate is designed for desktop browsers.
-
----
-
-## Where is my data stored?
-
-ChronoMate stores user data locally within your browser.
-
-This includes:
-
-- Application settings
-- Saved rifle profiles
-- User pellets
-- Session information (tester, chronograph and notes)
-
-The built-in pellet database (.177, .22 and .25) forms part of the application itself.
-
----
-
-## How do I update ChronoMate without losing my data?
-
-Before updating:
-
-1. Select **Export Data**.
-2. Save your backup file.
-3. Replace the application files with the new release.
-4. Select **Import Data** to restore your data.
-
----
-
-## Can I add my own pellets?
-
-Yes.
-
-ChronoMate supports user-created pellets which are stored separately from the built-in pellet database.
-
-This ensures future application updates never overwrite your own pellet information.
-
----
-
-## Can I edit the built-in pellet database?
-
-The built-in pellet database is maintained as part of ChronoMate.
-
-Users wishing to record additional pellets should use the User Pellet feature.
-
-Future ChronoMate releases may expand the built-in database.
-
-If you find a pellet that is not included in the built-in database, please let me know. The database will continue to grow through future ChronoMate updates.
-
----
-
-## Can I save more than one rifle?
-
-Yes.
-
-ChronoMate supports multiple saved rifle profiles.
-
-These are automatically included when creating a backup.
-
----
-
-## Can I print or save reports?
-
-Yes.
-
-Reports are designed for landscape printing.
-
-Most desktop browsers also allow reports to be saved directly as PDF files using the browser's Print function.
-
----
-
-## Is a ChronoMate report an official certificate?
+## Does ChronoMate collect my personal data?
 
 No.
 
-ChronoMate reports are intended as personal chronograph records only.
+ChronoMate stores all information locally on your own Android device.
 
-They are not official certification documents and should not be treated as legal proof of compliance.
+Nothing is uploaded to the internet unless you choose to share or back up your own files.
 
 ---
 
-## Will ChronoMate continue to receive updates?
+## Why does Google Play Protect warn me?
+
+Because ChronoMate is installed directly from GitHub rather than Google Play.
+
+Follow the instructions in the **Installation Guide** to temporarily pause Play Protect during installation.
+
+---
+
+## Why does Amazon Fire display a warning?
+
+Applications installed outside of the Amazon Appstore may generate a security warning.
+
+This is normal.
+
+Simply confirm that you wish to continue with the installation.
+
+---
+
+## Will updating ChronoMate delete my data?
+
+Normally, no.
+
+Installing a newer version over an existing installation preserves your saved rifles, pellets and settings.
+
+However, creating a backup before every update is always recommended.
+
+---
+
+## Can I print reports?
 
 Yes.
 
-Version 1.0.0 marks the completion of the original project scope.
+ChronoMate uses Android's built-in Print Manager.
 
-Future releases will focus on:
+Reports can normally be:
 
-- Built-in pellet database expansion.
-- Bug fixes.
-- Long-term maintenance.
-
-New functionality will only be added where it clearly improves the recording, reporting or management of chronograph sessions while preserving ChronoMate's lightweight design philosophy.
-
+- Printed directly.
+- Saved as PDF.
+- Shared using Android's print options.
 
 ---
 
-Android Debug
+## Can I move my data to another Android device?
 
-if a user has task kill on exit enabled then ChronoMate will have problems with importing & exporting user Backup files.
-the nature of a backup & import is to kill the current task to open the file picker, do the task then once complete restart ChronoMate,
-this breaks ChronoMate by killing the current task it was busy doing so when the ChronoMate task is restated it has no idea what it was doing so will instantly fail.
+Yes.
 
-Any android crashes and bugs should be filed with a debug log zip archive that was taken after the crash occured and will require steps that were taken to produce
-the crash/bug on your device. WE only have access to a couple of Android devices so can not test on every item of Hardware in use.
+Simply:
 
----
-
-## Where can I find more information?
-
-The complete ChronoMate documentation is included with the project.
-
-See:
-
-- Installation Guide
-- User Guide
-- Backup & Restore Guide
-- Changelog
+1. Export a backup.
+2. Copy the backup file to the new device.
+3. Install ChronoMate.
+4. Import the backup.
 
 ---
 
-## Documentation Pages
+## Are Android and desktop backups compatible?
+
+Yes.
+
+Android and desktop editions use the same backup format, allowing data to be transferred between supported versions without conversion.
+
+---
+
+## Which Android versions are supported?
+
+ChronoMate supports:
+
+- Android 5.1 or later.
+- Amazon Fire OS.
+
+The application has been successfully tested on:
+
+- Amazon Fire HD 10 (7th Generation)
+- Amazon Fire HD 10 (11th Generation)
+- Google Pixel 10 (Android 17)
+
+---
+
+## Can I create my own pellet database?
+
+Yes.
+
+User pellets can be added at any time.
+
+Your custom pellets are stored separately from the built-in pellet database and are included in backup files.
+
+---
+
+## Why does the keyboard briefly close after entering a shot?
+
+Some older Android devices, particularly Amazon Fire tablets, briefly close and reopen the on-screen keyboard after a shot is entered.
+
+This behaviour is normal and does not affect recording or calculations.
+
+---
+
+## Why doesn't Import work?
+
+If Android Developer Options are enabled, ensure **Don't keep activities** is **disabled**.
+
+When enabled, Android closes ChronoMate while the file picker is open, preventing the selected backup from being returned to the application.
+
+---
+
+## Does ChronoMate work on phones?
+
+Yes.
+
+However, ChronoMate has been designed primarily for Android tablets where the larger display provides the best user experience.
+
+---
+
+## Where can I report bugs or suggest improvements?
+
+Please use the GitHub repository to report bugs or suggest improvements.
+
+Constructive feedback is always welcome.
+
+---
+
+## Documentation
 
 ← [Backup & Restore](BACKUP.md)
 
 ↑ [Project README](../README.md)
 
-→ [Changelog](CHANGELOG.md)
+→ [Installation Guide](INSTALL.md)
 
-Doc Version 1.0.0
+→ [User Guide](USERGUIDE.md)
+
+Doc Version 1.1.1

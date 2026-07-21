@@ -6,7 +6,7 @@ ChronoMate Android includes a built-in Backup & Restore system to help protect y
 
 Creating regular backups is recommended, particularly before installing application updates or moving to a new Android device.
 
-Backup files are fully compatible with the desktop edition of ChronoMate.
+Android and desktop editions use the same backup format, allowing data to be transferred between supported versions without conversion.
 
 ---
 
