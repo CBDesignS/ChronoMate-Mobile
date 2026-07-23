@@ -1,5 +1,14 @@
 # ChronoMate Android Changelog
 
+## v1.1.2
+
+### Fixed
+
+- Preserved the Sub-12 pastel orange and pastel red warning colours in Android print preview and saved PDF reports.
+- Added print-specific warning-row overrides so the general white print background does not remove the warning colours.
+- Updated Android application version to v1.1.2 with versionCode 25.
+- Updated GitHub Actions to generate `ChronoMate-v1.1.2.apk`.
+
 ## v1.1.1
 
 ### Added
