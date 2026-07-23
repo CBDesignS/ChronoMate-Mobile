@@ -120,4 +120,4 @@ If the backup was transferred from another device, verify that the transfer comp
 
 → [Frequently Asked Questions](FAQ.md)
 
-Doc Version 1.1.1
+Doc Version 1.2.0

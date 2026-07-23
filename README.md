@@ -2,7 +2,7 @@
 
 <img src="assets/logo.png" alt="ChronoMate Logo" width="600">
 
-# ChronoMate Android v1.1.1
+# ChronoMate Android v1.2.0
 
 ### Lightweight offline chronograph recording software for air rifles
 
@@ -86,7 +86,7 @@ The application is designed primarily for Android tablets but also functions cor
 
 ## Project Status
 
-**Version 1.1.1** is the first full Android release.
+**Version 1.2.0** is the current full Android release.
 
 The Android edition has reached feature parity with the desktop version while retaining a native Android experience for printing, file import/export and notifications.
 

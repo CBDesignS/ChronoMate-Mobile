@@ -166,4 +166,4 @@ Constructive feedback is always welcome.
 
 → [User Guide](USERGUIDE.md)
 
-Doc Version 1.1.1
+Doc Version 1.2.0

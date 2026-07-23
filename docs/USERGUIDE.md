@@ -185,4 +185,4 @@ For installation or update issues, refer to the **Installation Guide**.
 
 → [Frequently Asked Questions](FAQ.md)
 
-Doc Version 1.1.1
+Doc Version 1.2.0

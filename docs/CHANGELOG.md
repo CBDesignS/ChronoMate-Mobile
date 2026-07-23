@@ -1,5 +1,15 @@
 # ChronoMate Android Changelog
 
+## v1.2.0
+
+### Changed
+
+- Aligned the Android release version with ChronoMate Desktop v1.2.0.
+- Updated the Android application to versionCode 26 and versionName 1.2.0.
+- Updated GitHub Actions to generate `ChronoMate-v1.2.0.apk`.
+- Updated application, documentation and source version references to v1.2.0.
+- Included the completed documentation and screenshot updates for the v1.2.0 release.
+
 ## v1.1.2
 
 ### Fixed

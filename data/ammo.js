@@ -2,7 +2,7 @@
 ============================================================
 
  ChronoMate 2026
- Version : v1.1.0
+ Version : v1.2.0
 
  Built-in Ammo Database
 

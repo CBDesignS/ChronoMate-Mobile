@@ -152,4 +152,4 @@ Enabling this option forces Android to close applications whenever they lose foc
 
 → [Frequently Asked Questions](FAQ.md)
 
-Doc Version 1.1.1
+Doc Version 1.2.0
