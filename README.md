@@ -64,10 +64,11 @@ Complete documentation is included with every release.
 
 ## Tested Devices
 
-ChronoMate has been successfully tested on:
+ChronoMate has been successfully tested on: (All main functions of ChronoMate Android including, export & import of backup data, export report pdf, printing to network printer)
 
 - Amazon Fire HD 10 (7th Generation)
 - Amazon Fire HD 10 (11th Generation)
+- LG G6 (Android 9)
 - Nokia 8.1 (Android 11)
 - Google Pixel 6 (Android 16)
 - Google Pixel 10 (Android 17)
@@ -88,7 +89,7 @@ The application is designed primarily for Android tablets but also functions cor
 
 ## Project Status
 
-**Version 1.2.0** is the current full Android release.
+**Version 1.3.0** is the current full Android release.
 
 The Android edition has reached feature parity with the desktop version while retaining a native Android experience for printing, file import/export and notifications.
 
