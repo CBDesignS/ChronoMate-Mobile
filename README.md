@@ -68,6 +68,7 @@ ChronoMate has been successfully tested on:
 
 - Amazon Fire HD 10 (7th Generation)
 - Amazon Fire HD 10 (11th Generation)
+- Google Pixel 6 (Android 16)
 - Google Pixel 10 (Android 17)
 
 The application is designed primarily for Android tablets but also functions correctly on larger Android phones.
